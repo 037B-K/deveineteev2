@@ -2,16 +2,35 @@
 # importer random pour un random number generator
 import random
 
-
+a = 0
+b = 100
 #faire une loop pour que le jeu puisse continer meme apres qu'il finisse
 jeux = True
-#Loop du jeu
+
+def choix(a,b):
+    a = int(input("Choissisez le premier nombre: "))
+    b = int(input("Choissisez le deuxieme nombre: "))
+    return a, b
+
+
+
+
+
+# Loop du jeu
 while jeux:
-    #Choisir un nombre random entre 0 et 100
-    nb = random.randrange(100)
+    print("Voulez vous garder les bornes (0,100) ou les changer?")
+    change = input("G pour les garder C pour les changer: ")
+    change = change.strip()
+    if change == "g" or "G":
+        print("Elles ne vont pas changer: (0,100)")
+        nb = random.randint(0,100)
+        print("J'ai choisi un nombre au hasard entre 0 et 100, a vous de deviner lequel")
+    elif change == "c" or "C":
+        choix(a, b)
+        nb = random.randint(a, b)
     essai = 0
     tries = 1
-    print("J'ai choisi un nombre au hasard entre 0 et 100, a vous de deviner lequel")
+
     #Loop de essai jusqua bon nombre
     while essai != nb:
         essai= int(input("Votre essai:"))
